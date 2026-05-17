@@ -36,31 +36,7 @@ Create a secure, isolated Azure lab for red team / penetration testing exercises
 
 This project uses Terraform exclusively to provision Azure resources.
 
-### Prerequisites
-
-- Terraform installed locally
-- Azure CLI installed and authenticated
-- An Azure subscription with permissions to create resource groups, virtual networks, public IPs, and VMs
-
-### Example workflow
-
-1. Authenticate to Azure:
-   ```bash
-   az login
-   az account set --subscription "<subscription-id>"
-   ```
-2. Initialize Terraform:
-   ```bash
-   terraform init
-   ```
-3. Review the planned resources:
-   ```bash
-   terraform plan -var-file="terraform.tfvars"
-   ```
-4. Apply the deployment:
-   ```bash
-   terraform apply -var-file="terraform.tfvars"
-   ```
+For a step-by-step deployment tutorial, see `START.md`.
 
 ### Terraform files
 
