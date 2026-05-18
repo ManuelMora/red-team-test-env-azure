@@ -23,7 +23,7 @@ az account set --subscription "<subscription-id>"
 Copy the example variables file and edit deployment settings:
 
 ```powershell
-Copy-Item .\terraform.tfvars.example .\terraform.tfvars
+Copy-Item .\terraform.example.tfvars .\terraform.tfvars
 ```
 
 Update `terraform.tfvars` for your environment:
