@@ -97,19 +97,19 @@ variable "kali_image_publisher" {
 variable "kali_image_offer" {
   description = "Marketplace offer for the Kali Linux image."
   type        = string
-  default     = "kali-linux"
+  default     = "kali"
 }
 
 variable "kali_image_sku" {
   description = "Marketplace SKU for the Kali Linux image."
   type        = string
-  default     = "2024.1"
+  default     = "kali-2026-1"
 }
 
 variable "kali_image_version" {
   description = "Marketplace image version for the Kali Linux image."
   type        = string
-  default     = "latest"
+  default     = "2026.1.0"
 }
 
 variable "target_image_publisher" {
@@ -121,17 +121,17 @@ variable "target_image_publisher" {
 variable "target_image_offer" {
   description = "Marketplace offer for the target VM image."
   type        = string
-  default     = "UbuntuServer"
+  default     = "0001-com-ubuntu-server-jammy-daily"
 }
 
 variable "target_image_sku" {
   description = "Marketplace SKU for the target VM image."
   type        = string
-  default     = "22_04-lts"
+  default     = "22_04-daily-lts-gen2"
 }
 
 variable "target_image_version" {
   description = "Marketplace image version for the target VM image."
   type        = string
-  default     = "latest"
+  default     = "22.04.202605150"
 }
