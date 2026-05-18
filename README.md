@@ -77,5 +77,10 @@ terraform destroy -var-file="terraform.tfvars"
 ## Notes
 
 - This repo is intended as a Terraform deployment scaffold for a private Azure pentest lab.
+- Before applying Terraform for the Kali Marketplace image, accept the Azure VM image terms:
+
+```bash
+az vm image terms accept --publisher kali-linux --offer kali --plan kali-2026-1
+```
 - Customize the VM sizes, OS images, and security settings to match your testing objectives.
 - Always obtain permission before conducting penetration tests.

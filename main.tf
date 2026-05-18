@@ -127,6 +127,12 @@ resource "azurerm_linux_virtual_machine" "kali" {
     version   = var.kali_image_version
   }
 
+  plan {
+    name      = var.kali_image_sku
+    product   = var.kali_image_offer
+    publisher = var.kali_image_publisher
+  }
+
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "StandardSSD_LRS"
