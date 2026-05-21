@@ -59,9 +59,15 @@ variable "ssh_public_key_path" {
 }
 
 variable "allowed_admin_cidr" {
-  description = "CIDR block allowed to SSH into the Kali VM. Restrict this in real deployments."
+  description = "CIDR block allowed to SSH into the Kali VM. Restrict this to your admin IP range."
   type        = string
-  default     = "0.0.0.0/0"
+  default     = "203.0.113.5/32"
+}
+
+variable "target_application_ports" {
+  description = "Application ports allowed from the public subnet to the target VM."
+  type        = list(string)
+  default     = ["80", "443"]
 }
 
 variable "kali_vm_name" {
