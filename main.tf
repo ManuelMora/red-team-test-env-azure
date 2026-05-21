@@ -30,13 +30,25 @@ resource "azurerm_network_security_group" "kali" {
   resource_group_name = azurerm_resource_group.lab.name
 
   security_rule {
+    name                       = "Deny-RDP"
+    priority                   = 90
+    direction                  = "Inbound"
+    access                     = "Deny"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "3389"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
     name                       = "Allow-SSH-Admin"
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = "22"
+    destination_port_ranges    = ["22"]
     source_address_prefix      = var.allowed_admin_cidr
     destination_address_prefix = "*"
   }
@@ -48,13 +60,25 @@ resource "azurerm_network_security_group" "target" {
   resource_group_name = azurerm_resource_group.lab.name
 
   security_rule {
-    name                       = "Allow-From-Lab"
+    name                       = "Allow-SSH-From-Public"
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = "*"
+    destination_port_ranges    = ["22"]
+    source_address_prefix      = azurerm_subnet.public.address_prefixes[0]
+    destination_address_prefix = "*"
+  }
+
+  security_rule {
+    name                       = "Allow-App-From-Public"
+    priority                   = 110
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_ranges    = var.target_application_ports
     source_address_prefix      = azurerm_subnet.public.address_prefixes[0]
     destination_address_prefix = "*"
   }
