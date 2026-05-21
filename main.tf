@@ -31,7 +31,7 @@ resource "azurerm_network_security_group" "kali" {
 
   security_rule {
     name                       = "Deny-RDP"
-    priority                   = 90
+    priority                   = 101
     direction                  = "Inbound"
     access                     = "Deny"
     protocol                   = "Tcp"
